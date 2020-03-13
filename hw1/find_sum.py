@@ -1,11 +1,10 @@
 import time
 import random
-import sys
-from merge_module import merge_sort
 
 
 def find_sum(arr, s):
-    arr = merge_sort(arr)
+    arr.sort()
+    print("The sorted array is: {}".format(arr))
     i = 0
     j = len(arr) - 1
     elems = []
@@ -17,18 +16,25 @@ def find_sum(arr, s):
         else:
             elems.append([arr[i], arr[j]])
             break
+        print("Subarray: {}".format(arr[i:j + 1]))
     return elems, arr
 
 
-# print(sys.getrecursionlimit())
-# sys.setrecursionlimit(10010)
-# print(sys.getrecursionlimit())
-arr_range = 100
-test_arr = [random.randint(1, 20) for x in range(arr_range)]
+# size of the array
+arr_range = 20
+
+# range of the values in the array
+values_range = 30
+
+# the sum of the array elements we're searching for
+value = 10
+
+test_arr = [random.randint(1, values_range) for x in range(arr_range)]
 print("The starting array is: {}".format(test_arr))
-start = time.time()
-elems, array = find_sum(test_arr, 10)
-end = time.time()
-print("The array after the search is: {}".format(array))
+
+start = time.clock()
+elems, array = find_sum(test_arr, value)
+end = time.clock()
+
 print("Time needed to do the search: {:f}".format(end - start))
-print("The elements are array is: {}".format(elems))
+print("The elements of the array are: {}".format(elems))
