@@ -27,10 +27,26 @@ def merge_sort(arr, p, q):
 if __name__ == '__main__':
     import random
     import sys
+    import time
+    from matplotlib import pyplot as plt
 
-    print(sys.getrecursionlimit())
-    arr_range = 200
-    test_arr = [random.randint(1, 20) for x in range(arr_range)]
-    print("The original array is: {}".format(test_arr))
-    merge_sort(test_arr, 0, len(test_arr) - 1)
-    print("The sorted array is: {}".format(test_arr))
+    n = list(range(10, 1000, 200))
+    times = []
+    rand_range = 5000
+    sys.setrecursionlimit(1010)
+    for i in range(len(n)):
+        test_arr = [random.randint(1, rand_range) for x in range(n[i])]
+        # print("The original array is: {}".format(test_arr))
+        start = time.clock()
+        merge_sort(test_arr, 0, len(test_arr) - 1)
+        end = time.clock()
+        times.append(end - start)
+        # print("The sorted array is: {}".format(test_arr))
+        print(n[i])
+
+    plt.plot(n, times, 'b')
+    plt.ylabel('Time')
+    plt.xlabel('Number of elements')
+    plt.suptitle('Merge sort execution time')
+    plt.show()
+
