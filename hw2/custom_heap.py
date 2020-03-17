@@ -1,6 +1,6 @@
 """
 Max heap and min heap implemented using class inheritance
-Elements of heaps are pairs (tuples) in form: (key (type int), value (custom type)))
+Elements of heaps are lists, where the first element of the list is considered as key
 """
 
 from math import ceil
