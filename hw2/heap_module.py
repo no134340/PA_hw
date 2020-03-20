@@ -1,8 +1,18 @@
 """
-Max heap and min heap implemented using heap types inside one class
+ZADATAK 2
+Max heap and min heap implemented using heap types inside one class.
+Could be improved: using class inheritance (super class Heap, sub classes: MaxHeap and MinHeap)
+Methods implemented:
+    - build heap
+    - heapify
+    - insert
+    - DELETE (line 145)
+    - increase/decrease key
+    - sort
+    - extract min/max
 """
 
-from math import ceil
+from math import floor
 from math import log2
 from math import inf
 
@@ -20,6 +30,19 @@ def parent(i):
 
 
 class Heap:
+    """
+        DESCPRIPTION:
+            Heap class.
+        FILEDS:
+            heap - the min/max heap
+            sorted - the sorted array (increasing if max heap, decreasing if min heap)
+            height - heap height
+            length - heap length (used during sorting)
+            heap_type - min/max heap. max by defalut.
+        NOTE:
+            AFTER SORTING, THE SORTED (BY KEY) ARRAY IS PLACED IN A SEPERATE
+            CLASS FIELD (self.sorted)
+        """
 
     def __init__(self, heap_type='max'):
         self.heap_type = heap_type
@@ -32,23 +55,13 @@ class Heap:
         return len(self.heap)
 
     def __str__(self):
-        ret_val = ""
-        tab_num = self.height
-        k = 0
-        for i in range(self.height):
-            j = i + 1
-            ret_val += "   " * tab_num * 2
-            while k <= (2 ** j - 2) and k < len(self.heap):
-                ret_val += "({})".format(self.heap[k]) + "   " * tab_num
-                k += 1
-            ret_val += "\n"
-            tab_num -= 1
-        return ret_val
+        return str(self.heap)
 
     def get_height(self):
-        return ceil(log2(self.length + 1))
+        return floor(log2(self.length))
 
     def heapify(self, i):
+        # not perfect, butt better than just printing an array
         if self.heap_type == 'max':
             l = left(i)
             r = right(i)
@@ -156,7 +169,7 @@ if __name__ == '__main__':
 
     # sort the heap
     sorted_arr = max_heap.sort()
-    print("Sorted increasing order using max heap:")
+    print("Sorted increasing order using heapsort on max heap:")
     print(sorted_arr)
 
     # delete an element from heap and print new heap
@@ -177,12 +190,12 @@ if __name__ == '__main__':
     min_heap = Heap('min')
     min_heap.build_heap(arr)
     # print built min heap
-    print("Min heap:")
+    print("\nMin heap:")
     print(min_heap)
 
     # sort the heap
     sorted_min = min_heap.sort()
-    print("Sorted decreasing order using min heap:")
+    print("Sorted decreasing order using heapsort on min heap:")
     print(sorted_min)
 
     # delete an element from heap and print new heap
