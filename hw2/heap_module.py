@@ -61,7 +61,6 @@ class Heap:
         return floor(log2(self.length))
 
     def heapify(self, i):
-        # not perfect, butt better than just printing an array
         if self.heap_type == 'max':
             l = left(i)
             r = right(i)
