@@ -26,6 +26,7 @@ NOTE:
     1 ABC 12
     2 XDC 10
     3 BUY
+
     NOT:
     7
 
