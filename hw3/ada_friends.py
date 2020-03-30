@@ -3,13 +3,15 @@ ZADATAK 3
 
 ADAFRIEN - Ada and Friends [SPOJ #32944]
 
-SPOJ accepted with time 2.30s and 27M of memory.
-
 Idea:
     Use a dictionary to store friend : expense pairs.
-    Convert it to list, sort it and take first k.
-    (if k is greater than the number of friends, take
-    them all).
+    Convert it to a list, sort it in reverse order and
+    the take the first k (if k is greater than the number
+    of friends, take them all).
+    (Sorting algorithm used: Tim sort. Counting sort would be
+    great because we could end up using only last k numbers
+    in the list, but the inputs are really large (>10^6)
+    so it would be too much auxiliary space used.)
 """
 
 params = input().split(' ')
