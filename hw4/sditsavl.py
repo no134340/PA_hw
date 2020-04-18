@@ -17,6 +17,7 @@ Ideja:
 
 """
 
+
 class Node:
 
     def __init__(self, key, data=None):
@@ -43,6 +44,7 @@ class Node:
             self.height = max(hl, hr) + 1
 
             self.bf = hr - hl
+
 
 class AVL:
 
@@ -146,7 +148,6 @@ class AVL:
                 self.rotate_left(node.left)
                 node.update_height()
             self.rotate_right(node)
-
 
 
 tree = AVL()
